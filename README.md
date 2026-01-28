@@ -34,7 +34,36 @@ Lord, I can't go a-home this a-way
 
 *-Peter, Paul and Mary*
 
+## Code Fencing
+---
+This Node.js script creates a simple HTTP server that listens on port 8080 and saves any POST data sent by clients into a file called output. It uses a writable stream to efficiently write incoming data directly to the file and handles any errors that occur during writing. After receiving all the data, the server responds with a placeholder HTML form so users can submit more data. Essentially, it functions as a minimal web server that stores submitted data and provides a way for clients to continue sending more data.
 
 
+```javascript
+const http = require('http');
+const fileSystem = require('fs');
+
+http.createServer((request, response) => {
+	// This opens up the writeable stream to `output`
+	const writeStream = fileSystem.createWriteStream('./output');
+
+	// This pipes the POST data to the file
+	request.pipe(writeStream);
+
+	// After all the data is saved, respond with a simple html form so they can post more data
+	request.on('end', function() {
+		response.writeHead(200, {
+			"content-type": "text/html"
+		});
+		response.end('[-- Insert generic html FORM element here --]');
+	});
+
+	// This is here incase any errors occur
+	writeStream.on('error', function(err) {
+		console.log(err);
+	});
+}).listen(8080);```
+
+[Node.js Snippet Source](https://pieces.app/collections/nodejs)
 
 [My Location](MyLocation.md)
