@@ -12,3 +12,5 @@ I like the band because their **musics are soothing** because of the __track and
 - Atomic Habits
 - 48 Laws of Power
 - How Habits Work.
+
+[My Location](MyLocation.md)
