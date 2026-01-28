@@ -62,7 +62,8 @@ http.createServer((request, response) => {
 	writeStream.on('error', function(err) {
 		console.log(err);
 	});
-}).listen(8080);```
+}).listen(8080);
+```
 
 [Node.js Snippet Source](https://pieces.app/collections/nodejs)
 
